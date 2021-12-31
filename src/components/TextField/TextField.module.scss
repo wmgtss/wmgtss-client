@@ -1,0 +1,26 @@
+.TextField {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+label {
+    font-size: 1.25rem;
+}
+
+.input {
+    font-size: 1rem;
+    padding: 12px 17px;
+    background-color: #19212c;
+    color: #d8e4f7;
+    border-radius: 5px;
+    border-color: transparent;
+    width: 100%;
+
+    &:focus {
+        outline: none;
+        border-color: #879db8;
+        border-style: solid;
+        transition: border-color 0.1s ease;
+    }
+}

@@ -1,8 +1,9 @@
 import LoginForm from '../../components/LoginForm/LoginForm';
-import FullScreenForm from '../FullScreenForm/FullScreenForm';
+import FullScreenForm from '../../components/FullScreenContainer/FullScreenContainer';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import styles from './App.module.scss';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
+import NotFound from '../NotFound/NotFound';
 
 function App() {
     return (
@@ -26,6 +27,8 @@ function App() {
                         </FullScreenForm>
                     }
                 />
+
+                <Route path="/*" element={<NotFound />} />
             </Routes>
         </div>
     );

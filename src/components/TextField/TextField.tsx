@@ -4,6 +4,7 @@ export type TextFieldProps = {
     isPassword?: boolean;
     label?: string;
     placeholder?: string;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 function TextField(props: TextFieldProps) {
@@ -16,6 +17,7 @@ function TextField(props: TextFieldProps) {
                 className={styles.input}
                 type={type}
                 placeholder={props.placeholder}
+                onChange={props.onChange}
             ></input>
         </div>
     );

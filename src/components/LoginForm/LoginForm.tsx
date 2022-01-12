@@ -5,7 +5,7 @@ import FormButton from '../FormButton/FormButton';
 import { Link } from 'react-router-dom';
 import { emailRegex } from '../../utils/regex';
 import { Form, Formik, FormikErrors } from 'formik';
-import { LoginDto } from '../../services/AuthService';
+import AuthService, { LoginDto } from '../../services/AuthService';
 
 function LoginForm() {
     const validate = (values: LoginDto) => {
@@ -21,14 +21,16 @@ function LoginForm() {
         return errors;
     };
 
+    const submit = (values: LoginDto) => {
+        AuthService.login(values);
+    };
+
     return (
         <CenteredForm heading="Login to WMGTSS">
             <Formik
                 initialValues={{ email: '', password: '' }}
                 validate={validate}
-                onSubmit={(values) => {
-                    console.log(values);
-                }}
+                onSubmit={submit}
             >
                 <Form className={styles.form}>
                     <TextField type="email" name="email" placeholder="Email" />

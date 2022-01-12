@@ -1,6 +1,6 @@
 // Main background colours
 $dark-1: #0d1117;
-$dark-2: #141a24;
+$dark-2: #0f1620;
 $dark-3: #19212c;
 
 // Border colours
@@ -9,8 +9,14 @@ $highlight: #879db8;
 // Font colours
 $text-main: white;
 $link: #20b9ff;
-$error: red;
+$error: #d10000;
 $off-white: #d8e4f7;
 
 // Button colours
 $submit-green: #247924;
+
+// Media queries
+$media-desktop: '(min-width : 1024px)';
+$media-tablet: '(min-width : 768px)';
+$media-mobile: '(min-width : 600px)';
+$media-mobile-sm: '(min-width : 480px)';

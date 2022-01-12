@@ -1,27 +1,43 @@
 @import '../../utils/variables.scss';
 
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .ContentCenter {
-    margin: auto;
-    border: 2px solid $dark-3;
-    background-color: $dark-2;
-    padding: 30px;
-    border-radius: 10px;
-    width: 450px;
     text-align: center;
-    transition: height 0.2s ease;
+    margin: auto;
+    padding: 25px;
+    width: 100%;
+    max-width: 400px;
+
+    @media #{$media-desktop} {
+        width: 450px;
+        border: 2px solid $dark-3;
+        background-color: $dark-2;
+        border-radius: 10px;
+    }
 
     .header {
         font-size: 2rem;
         margin-bottom: 40px;
 
-        h2 {
-            font-size: 2rem;
-            font-weight: lighter;
-        }
-
         img {
             height: 50px;
             margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: lighter;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: $error;
         }
     }
 }

@@ -1,32 +1,22 @@
 import TextField from '../TextField/TextField';
-import styles from './SignUpForm.module.scss';
+import styles from './BreachedPassword.module.scss';
 import CenteredForm from '../CenteredForm/CenteredForm';
 import FormButton from '../FormButton/FormButton';
 import { Link } from 'react-router-dom';
+import { passwordRegex } from '../../utils/regex';
 import { Form, Formik, FormikErrors } from 'formik';
-import AuthService, { RegisterDto } from '../../services/AuthService';
-import { emailRegex, passwordRegex } from '../../utils/regex';
+import warning from '../../static/warning.svg';
 
-type RegisterFormFields = RegisterDto & {
+type ChangePasswordForm = {
+    password: string;
     passwordRepeat: string;
 };
 
-function SignUpForm() {
-    const validate = (values: RegisterFormFields) => {
-        const errors: FormikErrors<RegisterFormFields> = {};
-
-        if (!values.name) errors.name = 'Required';
-
-        if (!values.email) {
-            errors.email = 'Required';
-        } else if (!emailRegex.test(values.email)) {
-            errors.email = 'Invalid email address';
-        }
-
+function BreachedPassword() {
+    const validate = (values: ChangePasswordForm) => {
+        const errors: FormikErrors<ChangePasswordForm> = {};
         if (!values.password) {
             errors.password = 'Required';
-        } else if (values.password.length < 8) {
-            errors.password = 'Must be at least 8 characters';
         } else if (!passwordRegex.test(values.password)) {
             errors.password =
                 'Include upper case, lower case, number, and special character';
@@ -41,25 +31,21 @@ function SignUpForm() {
         return errors;
     };
 
-    const submit = (values: RegisterDto) => {
-        AuthService.register(values);
-    };
-
     return (
-        <CenteredForm heading="Sign Up for WMGTSS">
+        <CenteredForm
+            heading="Insecure Password"
+            subheading="Your password has been seen 999 times in data breaches!
+            Change it now to secure your account."
+            icon={warning}
+        >
             <Formik
-                initialValues={{
-                    name: '',
-                    email: '',
-                    password: '',
-                    passwordRepeat: '',
-                }}
+                initialValues={{ password: '', passwordRepeat: '' }}
                 validate={validate}
-                onSubmit={submit}
+                onSubmit={(values) => {
+                    console.log(values);
+                }}
             >
                 <Form className={styles.form}>
-                    <TextField name="name" placeholder="Full Name" />
-                    <TextField type="email" name="email" placeholder="Email" />
                     <TextField
                         type="password"
                         name="password"
@@ -70,14 +56,16 @@ function SignUpForm() {
                         name="passwordRepeat"
                         placeholder="Repeat Password"
                     />
-                    <FormButton onClick={console.log}>Sign Up</FormButton>
+                    <FormButton onClick={console.log}>
+                        Change Password
+                    </FormButton>
                 </Form>
             </Formik>
             <p>
-                Already have an account? <Link to="/login">Sign in!</Link>
+                <Link to="/dashboard">Use insecure password</Link>
             </p>
         </CenteredForm>
     );
 }
 
-export default SignUpForm;
+export default BreachedPassword;

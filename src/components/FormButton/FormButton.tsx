@@ -8,7 +8,7 @@ export type FormButtonProps = {
 
 function FormButton(props: FormButtonProps) {
     return (
-        <button className={styles.button} onClick={props.onClick}>
+        <button className={styles.button} onClick={props.onClick} type="submit">
             {props.children}
         </button>
     );

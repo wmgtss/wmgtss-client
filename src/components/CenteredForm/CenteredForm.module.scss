@@ -1,11 +1,14 @@
+@import '../../utils/variables.scss';
+
 .ContentCenter {
     margin: auto;
-    border: 2px solid #19212c;
-    background-color: #141a24;
+    border: 2px solid $dark-3;
+    background-color: $dark-2;
     padding: 30px;
     border-radius: 10px;
     width: 450px;
     text-align: center;
+    transition: height 0.2s ease;
 
     .header {
         font-size: 2rem;

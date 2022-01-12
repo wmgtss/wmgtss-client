@@ -1,24 +1,13 @@
+import { ErrorMessage, Field, FieldAttributes } from 'formik';
 import styles from './TextField.module.scss';
 
-export type TextFieldProps = {
-    isPassword?: boolean;
-    label?: string;
-    placeholder?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
-
-function TextField(props: TextFieldProps) {
-    const type = props.isPassword ? 'password' : 'text';
-
+function TextField(props: FieldAttributes<any>) {
     return (
-        <div className={styles.TextField}>
-            {props.label ? <label>{props.label}</label> : null}
-            <input
-                className={styles.input}
-                type={type}
-                placeholder={props.placeholder}
-                onChange={props.onChange}
-            ></input>
+        <div className={styles.textField}>
+            <Field className={styles.input} {...props}></Field>
+            <div className={styles.error}>
+                <ErrorMessage name={props.name} component="div" />
+            </div>
         </div>
     );
 }

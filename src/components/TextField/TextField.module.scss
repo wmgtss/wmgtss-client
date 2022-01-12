@@ -1,25 +1,30 @@
+@import '../../utils/variables.scss';
+
 .TextField {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-label {
-    font-size: 1.25rem;
+.error {
+    color: $error;
+    text-align: left;
+    font-size: 0.8rem;
+    position: absolute;
 }
 
 .input {
     font-size: 1rem;
     padding: 12px 17px;
-    background-color: #19212c;
-    color: #d8e4f7;
+    background-color: $dark-3;
+    color: $off-white;
     border-radius: 5px;
     border-color: transparent;
     width: 100%;
 
     &:focus {
         outline: none;
-        border-color: #879db8;
+        border-color: $highlight;
         border-style: solid;
         transition: border-color 0.1s ease;
     }

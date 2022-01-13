@@ -2,11 +2,13 @@ import TextField from '../TextField/TextField';
 import styles from './BreachedPassword.module.scss';
 import CenteredForm from '../CenteredForm/CenteredForm';
 import FormButton from '../FormButton/FormButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { passwordRegex } from '../../utils/regex';
-import { Form, Formik, FormikErrors } from 'formik';
+import { Form, Formik, FormikErrors, FormikHelpers } from 'formik';
 import warning from '../../static/warning.svg';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import UserService from '../../services/UserService';
+import { setPwned } from '../../redux/slices/pwned.slice';
 
 type ChangePasswordForm = {
     password: string;
@@ -15,6 +17,8 @@ type ChangePasswordForm = {
 
 function BreachedPassword() {
     const pwned = useAppSelector((state) => state.pwned.pwnedCount);
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const validate = (values: ChangePasswordForm) => {
         const errors: FormikErrors<ChangePasswordForm> = {};
@@ -34,6 +38,21 @@ function BreachedPassword() {
         return errors;
     };
 
+    const submit = (
+        values: ChangePasswordForm,
+        formik: FormikHelpers<ChangePasswordForm>,
+    ) => {
+        UserService.changePassword(values.password).then((res) => {
+            console.log(res.data);
+            if (res.data.pwned) {
+                dispatch(setPwned(res.data.pwned));
+                formik.resetForm();
+            } else {
+                navigate('/');
+            }
+        });
+    };
+
     return (
         <CenteredForm
             heading="Insecure Password"
@@ -43,9 +62,7 @@ function BreachedPassword() {
             <Formik
                 initialValues={{ password: '', passwordRepeat: '' }}
                 validate={validate}
-                onSubmit={(values) => {
-                    console.log(values);
-                }}
+                onSubmit={submit}
             >
                 <Form className={styles.form}>
                     <TextField

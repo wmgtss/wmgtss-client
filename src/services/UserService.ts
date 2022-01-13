@@ -8,5 +8,13 @@ const getCurrentUser = () => {
     });
 };
 
-const functions = { getCurrentUser };
+const changePassword = (newPassword: string) => {
+    return axios.put(
+        API_URL + '/user/password',
+        { password: newPassword },
+        { withCredentials: true },
+    );
+};
+
+const functions = { getCurrentUser, changePassword };
 export default functions;

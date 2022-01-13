@@ -43,7 +43,6 @@ function BreachedPassword() {
         formik: FormikHelpers<ChangePasswordForm>,
     ) => {
         UserService.changePassword(values.password).then((res) => {
-            console.log(res.data);
             if (res.data.pwned) {
                 dispatch(setPwned(res.data.pwned));
                 formik.resetForm();
@@ -75,9 +74,7 @@ function BreachedPassword() {
                         name="passwordRepeat"
                         placeholder="Repeat Password"
                     />
-                    <FormButton onClick={console.log}>
-                        Change Password
-                    </FormButton>
+                    <FormButton>Change Password</FormButton>
                 </Form>
             </Formik>
             <p>

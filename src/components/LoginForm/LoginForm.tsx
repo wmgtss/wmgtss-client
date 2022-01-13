@@ -56,7 +56,7 @@ function LoginForm() {
                         name="password"
                         placeholder="Password"
                     />
-                    <FormButton onClick={console.log}>Login</FormButton>
+                    <FormButton>Login</FormButton>
                 </Form>
             </Formik>
             <p>

@@ -60,6 +60,8 @@ function SignUpForm() {
             if (res.data.pwned) {
                 dispatch(setPwned(res.data.pwned));
                 navigate('/yikes');
+            } else {
+                navigate('/');
             }
         });
     };
@@ -89,7 +91,7 @@ function SignUpForm() {
                         name="passwordRepeat"
                         placeholder="Repeat Password"
                     />
-                    <FormButton onClick={console.log}>Sign Up</FormButton>
+                    <FormButton>Sign Up</FormButton>
                 </Form>
             </Formik>
             <p>

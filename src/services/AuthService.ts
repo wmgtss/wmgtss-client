@@ -20,8 +20,12 @@ const register = (user: RegisterDto) => {
 };
 
 const login = (user: LoginDto) => {
-    console.log(API_URL);
     return axios.post(API_URL + '/auth/login', user, { withCredentials: true });
 };
 
-export default { register, login };
+const logout = () => {
+    return axios.post(API_URL + '/auth/logout', {}, { withCredentials: true });
+};
+
+const functions = { register, login, logout };
+export default functions;

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { passwordRegex } from '../../utils/regex';
 import { Form, Formik, FormikErrors } from 'formik';
 import warning from '../../static/warning.svg';
+import { useAppSelector } from '../../redux/hooks';
 
 type ChangePasswordForm = {
     password: string;
@@ -13,6 +14,8 @@ type ChangePasswordForm = {
 };
 
 function BreachedPassword() {
+    const pwned = useAppSelector((state) => state.pwned.pwnedCount);
+
     const validate = (values: ChangePasswordForm) => {
         const errors: FormikErrors<ChangePasswordForm> = {};
         if (!values.password) {
@@ -34,8 +37,7 @@ function BreachedPassword() {
     return (
         <CenteredForm
             heading="Insecure Password"
-            subheading="Your password has been seen 999 times in data breaches!
-            Change it now to secure your account."
+            subheading={`Your password has been seen ${pwned} times in data breaches! Change it now to secure your account.`}
             icon={warning}
         >
             <Formik
@@ -62,7 +64,7 @@ function BreachedPassword() {
                 </Form>
             </Formik>
             <p>
-                <Link to="/dashboard">Use insecure password</Link>
+                <Link to="/">Use insecure password</Link>
             </p>
         </CenteredForm>
     );

@@ -15,6 +15,7 @@ function LoginForm() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [error, setError] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const validate = (values: LoginDto) => {
         const errors: FormikErrors<LoginDto> = {};
@@ -30,14 +31,19 @@ function LoginForm() {
     };
 
     const submit = (values: LoginDto) => {
+        setIsSubmitting(true);
         AuthService.login(values)
             .then((res) => {
                 dispatch(login(res.data));
                 navigate('/');
             })
             .catch((error) => {
+                setIsSubmitting(false);
+                if (!error.response) {
+                    return setError('Server unavailable');
+                }
                 if (error.response.status === 401) {
-                    setError('Invalid email or password');
+                    return setError('Invalid email or password');
                 }
             });
     };
@@ -56,7 +62,7 @@ function LoginForm() {
                         name="password"
                         placeholder="Password"
                     />
-                    <FormButton>Login</FormButton>
+                    <FormButton disabled={isSubmitting}>Login</FormButton>
                 </Form>
             </Formik>
             <p>

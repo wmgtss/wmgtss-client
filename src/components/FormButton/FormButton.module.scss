@@ -23,4 +23,9 @@
         background-color: darken($submit-green, 2);
         transition: none;
     }
+
+    &:disabled {
+        cursor: default;
+        background-color: #3f5c3f;
+    }
 }

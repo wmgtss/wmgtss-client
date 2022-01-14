@@ -10,6 +10,7 @@ import { useAppDispatch } from '../../redux/hooks';
 import { login } from '../../redux/slices/auth.slice';
 import { setPwned } from '../../redux/slices/pwned.slice';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 type RegisterFormFields = RegisterDto & {
     passwordRepeat: string;
@@ -18,6 +19,7 @@ type RegisterFormFields = RegisterDto & {
 function SignUpForm() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const validate = (values: RegisterFormFields) => {
         const errors: FormikErrors<RegisterFormFields> = {};
@@ -49,6 +51,7 @@ function SignUpForm() {
     };
 
     const submit = (values: RegisterFormFields) => {
+        setIsSubmitting(true);
         const user: RegisterDto = {
             email: values.email,
             name: values.name,
@@ -91,7 +94,7 @@ function SignUpForm() {
                         name="passwordRepeat"
                         placeholder="Repeat Password"
                     />
-                    <FormButton>Sign Up</FormButton>
+                    <FormButton disabled={isSubmitting}>Sign Up</FormButton>
                 </Form>
             </Formik>
             <p>

@@ -9,6 +9,7 @@ import warning from '../../static/warning.svg';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import UserService from '../../services/UserService';
 import { setPwned } from '../../redux/slices/pwned.slice';
+import { useState } from 'react';
 
 type ChangePasswordForm = {
     password: string;
@@ -19,6 +20,7 @@ function BreachedPassword() {
     const pwned = useAppSelector((state) => state.pwned.pwnedCount);
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const validate = (values: ChangePasswordForm) => {
         const errors: FormikErrors<ChangePasswordForm> = {};
@@ -42,10 +44,12 @@ function BreachedPassword() {
         values: ChangePasswordForm,
         formik: FormikHelpers<ChangePasswordForm>,
     ) => {
+        setIsSubmitting(true);
         UserService.changePassword(values.password).then((res) => {
             if (res.data.pwned) {
                 dispatch(setPwned(res.data.pwned));
                 formik.resetForm();
+                setIsSubmitting(false);
             } else {
                 navigate('/');
             }
@@ -74,7 +78,9 @@ function BreachedPassword() {
                         name="passwordRepeat"
                         placeholder="Repeat Password"
                     />
-                    <FormButton>Change Password</FormButton>
+                    <FormButton disabled={isSubmitting}>
+                        Change Password
+                    </FormButton>
                 </Form>
             </Formik>
             <p>

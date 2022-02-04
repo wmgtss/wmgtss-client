@@ -1,7 +1,7 @@
-import TextField from '../TextField/TextField';
+import TextField from '../../components/TextField/TextField';
 import styles from './BreachedPassword.module.scss';
-import CenteredForm from '../CenteredForm/CenteredForm';
-import FormButton from '../FormButton/FormButton';
+import CenteredForm from '../../components/CenteredForm/CenteredForm';
+import FormButton from '../../components/FormButton/FormButton';
 import { Link, useNavigate } from 'react-router-dom';
 import { passwordRegex } from '../../utils/regex';
 import { Form, Formik, FormikErrors, FormikHelpers } from 'formik';

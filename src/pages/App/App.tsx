@@ -7,9 +7,10 @@ import { useAppDispatch } from '../../redux/hooks';
 import { login, logout } from '../../redux/slices/auth.slice';
 import UserService from '../../services/UserService';
 import PrivateRoutes from '../../components/PrivateRoutes/PrivateRoutes';
-import Dashboard from '../Dashboard/Dashboard';
+import StandardPage from '../StandardPage/StandardPage';
 import { useEffect } from 'react';
-import BreachedPassword from '../../components/BreachedPassword/BreachedPassword';
+import BreachedPassword from '../BreachedPassword/BreachedPassword';
+import DashboardTopics from '../../components/DashboardTopics/DashboardTopics';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -29,7 +30,14 @@ function App() {
             <Routes>
                 {/* Private Routes */}
                 <Route path="/" element={<PrivateRoutes />}>
-                    <Route path="/" element={<Dashboard />} />
+                    <Route
+                        path="/"
+                        element={
+                            <StandardPage>
+                                <DashboardTopics />
+                            </StandardPage>
+                        }
+                    />
                     <Route path="/yikes" element={<BreachedPassword />} />
                 </Route>
 

@@ -1,9 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+export enum Role {
+    User = 'user',
+    Admin = 'admin',
+    Superuser = 'superuser',
+}
+
 interface User {
+    id: null;
     email: null;
     name: null;
-    id: null;
+    roles: Role[];
     createdOn: null;
 }
 
@@ -28,6 +35,7 @@ export const authSlice = createSlice({
         login: (state, action: PayloadAction<User>) => {
             state.isAuthed = true;
             state.user = action.payload;
+            state.isLoading = false;
         },
         logout: (_state) => {
             return {

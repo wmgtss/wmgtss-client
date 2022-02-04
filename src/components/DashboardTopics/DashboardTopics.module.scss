@@ -1,0 +1,54 @@
+@import '../../utils/variables.scss';
+
+.content {
+    width: 100%;
+
+    h1 {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 35px;
+    }
+
+    .topics {
+        width: 80%;
+        margin: 0 auto;
+
+        .createButton {
+            float: right;
+        }
+
+        .topicsEnclosed {
+            background-color: $dark-2;
+            padding: 25px 0;
+            border-radius: 10px;
+            margin-bottom: 10px;
+
+            .topic {
+                margin: 0 auto;
+                width: 90%;
+                padding: 20px 0;
+                border-top: 1px solid $dark-4;
+
+                h3 {
+                    color: $link;
+                    font-size: 1.3rem;
+                }
+
+                .details {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .updated {
+                        font-size: 0.8rem;
+                        color: $time-grey;
+                    }
+                }
+
+                &:last-child {
+                    border-bottom: 1px solid $dark-4;
+                    padding-bottom: 25px;
+                }
+            }
+        }
+    }
+}

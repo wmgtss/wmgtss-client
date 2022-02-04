@@ -2,6 +2,12 @@ import axios from 'axios';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
+export interface PublicUserDto {
+    id: string;
+    name: string;
+    createdOn: Date;
+}
+
 const getCurrentUser = () => {
     return axios.get(API_URL + '/user', {
         withCredentials: true,

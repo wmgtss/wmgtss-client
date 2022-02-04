@@ -14,7 +14,10 @@ function CenteredForm(props: CenteredFormProps) {
         <div className={styles.container}>
             <div className={styles.ContentCenter}>
                 <div className={styles.header}>
-                    <img src={props.icon ? props.icon : logo} />
+                    <img
+                        src={props.icon ? props.icon : logo}
+                        alt="WMGTSS Logo"
+                    />
                     <h2>{props.heading}</h2>
                     {(() => {
                         if (props.subheading) {

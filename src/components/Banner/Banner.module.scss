@@ -1,0 +1,11 @@
+@import '../../utils/variables.scss';
+
+.container {
+    width: 100%;
+    background-color: $warning;
+    overflow: hidden;
+    color: black;
+    font-weight: bold;
+    transition: height 0.2s ease;
+    text-align: center;
+}

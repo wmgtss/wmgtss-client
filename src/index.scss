@@ -16,6 +16,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: $dark-1;
     color: $off-white;
+    min-height: 100vh;
     height: 100vh;
 }
 
@@ -27,4 +28,10 @@ a {
         text-decoration: underline;
         cursor: pointer;
     }
+}
+
+h1,
+h2,
+h3 {
+    font-weight: lighter;
 }

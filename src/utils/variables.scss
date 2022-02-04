@@ -1,7 +1,8 @@
 // Main background colours
 $dark-1: #0d1117;
-$dark-2: #0f1620;
-$dark-3: #19212c;
+$dark-2: lighten($dark-1, 3);
+$dark-3: lighten($dark-1, 6);
+$dark-4: lighten($dark-1, 12);
 
 // Border colours
 $highlight: #879db8;
@@ -11,12 +12,14 @@ $text-main: white;
 $link: #20b9ff;
 $error: #d10000;
 $off-white: #d8e4f7;
+$time-grey: #888;
+$warning: #f9b222;
 
 // Button colours
 $submit-green: #247924;
 
 // Media queries
-$media-desktop: '(min-width : 1024px)';
+$media-desktop: '(min-width : 1200px)';
 $media-tablet: '(min-width : 768px)';
 $media-mobile: '(min-width : 600px)';
 $media-mobile-sm: '(min-width : 480px)';

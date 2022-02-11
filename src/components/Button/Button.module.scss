@@ -1,10 +1,8 @@
-@import '../../utils/variables.scss';
-
 .button {
     height: 40px;
     padding: 5px 20px;
-    color: $text-main;
-    background-color: $submit-green;
+    color: white;
+
     border: none;
     border-radius: 5px;
     transition: background-color 0.1s ease;
@@ -14,17 +12,14 @@
 
     &:hover {
         cursor: pointer;
-        background-color: lighten($submit-green, 3);
     }
 
     &:active {
         cursor: pointer;
-        background-color: darken($submit-green, 2);
         transition: none;
     }
 
     &:disabled {
         cursor: default;
-        background-color: #3f5c3f;
     }
 }

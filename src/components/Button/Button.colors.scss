@@ -1,0 +1,34 @@
+@import '../../utils/variables.scss';
+
+.primary {
+    background-color: $btn-primary;
+
+    &:hover {
+        background-color: lighten($btn-primary, 3);
+    }
+
+    &:active {
+        background-color: darken($btn-primary, 2);
+    }
+
+    &:disabled {
+        background-color: #3f5c3f;
+    }
+}
+
+.secondary {
+    background-color: $btn-secondary;
+
+    &:hover {
+        background-color: lighten($btn-secondary, 3);
+    }
+
+    &:active {
+        background-color: darken($btn-secondary, 2);
+    }
+
+    &:disabled {
+        background-color: #252525;
+        color: #646464;
+    }
+}

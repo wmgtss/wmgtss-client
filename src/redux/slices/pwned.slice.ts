@@ -23,7 +23,4 @@ export const authSlice = createSlice({
 
 export const { setPwned } = authSlice.actions;
 
-// Other code such as selectors can use the imported `RootState` type
-export const getPwned = (state: RootState) => state.pwned.pwnedCount;
-
 export default authSlice.reducer;

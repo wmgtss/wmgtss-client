@@ -1,4 +1,4 @@
-import SignUpForm from '../../components/SignUpForm/SignUpForm';
+import SignUpForm from './SignUpForm/SignUpForm';
 import { Route, Routes } from 'react-router-dom';
 import Error from '../Error/Error';
 

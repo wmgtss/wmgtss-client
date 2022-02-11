@@ -1,9 +1,9 @@
 import styles from './CreateTopicForm.module.scss';
-import TextField from '../TextField/TextField';
-import FormButton from '../FormButton/FormButton';
+import TextField from '../../../components/TextField/TextField';
+import FormButton from '../../../components/FormButton/FormButton';
 import { Form, Formik, FormikErrors } from 'formik';
 import { useState } from 'react';
-import TopicService, { CreateTopicDto } from '../../services/TopicService';
+import TopicService, { CreateTopicDto } from '../../../services/TopicService';
 
 export type CreateTopicFormProps = {
     onSubmit?: () => void;
@@ -17,7 +17,6 @@ function CreateTopicForm(props: CreateTopicFormProps) {
         const errors: FormikErrors<CreateTopicDto> = {};
 
         if (!values.name) errors.name = 'Required';
-        if (!values.description) errors.description = 'Required';
 
         return errors;
     };
@@ -48,7 +47,10 @@ function CreateTopicForm(props: CreateTopicFormProps) {
                 <Form className={styles.form}>
                     <p className={styles.error}>{error}</p>
                     <TextField name="name" placeholder="Name" />
-                    <TextField name="description" placeholder="Description" />
+                    <TextField
+                        name="description"
+                        placeholder="Description (Optional)"
+                    />
                     <FormButton disabled={isSubmitting}>Create</FormButton>
                 </Form>
             </Formik>

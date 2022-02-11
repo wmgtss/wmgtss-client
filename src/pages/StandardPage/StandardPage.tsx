@@ -1,6 +1,6 @@
 import styles from './StandardPage.module.scss';
-import NavBar from '../../components/NavBar/NavBar';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import NavBar from './NavBar/NavBar';
+import Sidebar from './Sidebar/Sidebar';
 import { ReactNode } from 'react';
 import Banner from '../../components/Banner/Banner';
 

@@ -1,14 +1,14 @@
-import TextField from '../TextField/TextField';
+import TextField from '../../../components/TextField/TextField';
 import styles from './SignUpForm.module.scss';
-import CenteredForm from '../CenteredForm/CenteredForm';
-import FormButton from '../FormButton/FormButton';
+import CenteredForm from '../../../components/CenteredForm/CenteredForm';
+import FormButton from '../../../components/FormButton/FormButton';
 import { Link } from 'react-router-dom';
 import { Form, Formik, FormikErrors } from 'formik';
-import AuthService, { RegisterDto } from '../../services/AuthService';
-import { emailRegex, passwordRegex } from '../../utils/regex';
-import { useAppDispatch } from '../../redux/hooks';
-import { login } from '../../redux/slices/auth.slice';
-import { setPwned } from '../../redux/slices/pwned.slice';
+import AuthService, { RegisterDto } from '../../../services/AuthService';
+import { emailRegex, passwordRegex } from '../../../utils/regex';
+import { useAppDispatch } from '../../../redux/hooks';
+import { login } from '../../../redux/slices/auth.slice';
+import { setPwned } from '../../../redux/slices/pwned.slice';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -20,6 +20,7 @@ function SignUpForm() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState('');
 
     const validate = (values: RegisterFormFields) => {
         const errors: FormikErrors<RegisterFormFields> = {};
@@ -50,7 +51,7 @@ function SignUpForm() {
         return errors;
     };
 
-    const submit = (values: RegisterFormFields) => {
+    const submit = (values: RegisterFormFields, { resetForm }: any) => {
         setIsSubmitting(true);
         const user: RegisterDto = {
             email: values.email,
@@ -58,19 +59,25 @@ function SignUpForm() {
             password: values.password,
         };
 
-        AuthService.register(user).then((res) => {
-            dispatch(login(res.data.user));
-            if (res.data.pwned) {
-                dispatch(setPwned(res.data.pwned));
-                navigate('/yikes');
-            } else {
-                navigate('/');
-            }
-        });
+        AuthService.register(user)
+            .then((res) => {
+                dispatch(login(res.data.user));
+                if (res.data.pwned) {
+                    dispatch(setPwned(res.data.pwned));
+                    navigate('/yikes');
+                } else {
+                    navigate('/');
+                }
+            })
+            .catch((err) => {
+                setIsSubmitting(false);
+                setError('A user already exists with that email');
+                resetForm();
+            });
     };
 
     return (
-        <CenteredForm heading="Sign Up for WMGTSS">
+        <CenteredForm heading="Sign Up for WMGTSS" subheading={error}>
             <Formik
                 initialValues={{
                     name: '',

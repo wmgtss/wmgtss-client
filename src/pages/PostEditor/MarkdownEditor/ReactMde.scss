@@ -1,0 +1,40 @@
+@import '../../../utils/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+// Variables
+$mde-border-radius: 5px;
+$mde-border-color: $dark-4;
+$mde-button-color: $off-white;
+$mde-toolbar-color: $dark-3;
+$mde-selected-color: $highlight;
+
+@import 'react-mde/lib/styles/scss/react-mde-all.scss';
+
+.mde-tabs > button {
+    color: $off-white;
+    font-family: 'Segoe UI';
+    padding: 0 5px;
+
+    &.selected {
+        background-color: $dark-4;
+        border-radius: 2px;
+    }
+}
+
+.mde-textarea-wrapper {
+    border: none;
+}
+
+.mde-text {
+    background-color: $dark-4;
+    font-family: 'Roboto Mono';
+    color: white;
+    border-radius: 0 0 5px 5px;
+    border: 2px solid transparent !important;
+
+    &:focus {
+        outline: none;
+        border-color: $highlight !important;
+        transition: border-color 0.1s ease;
+    }
+}

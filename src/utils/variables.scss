@@ -8,7 +8,7 @@ $dark-4: lighten($dark-1, 12);
 $highlight: #879db8;
 
 // Font colours
-$text-main: white;
+// $text-main: white;
 $link: #20b9ff;
 $error: #d10000;
 $off-white: #d8e4f7;
@@ -16,7 +16,8 @@ $time-grey: #888;
 $warning: #f9b222;
 
 // Button colours
-$submit-green: #247924;
+$btn-primary: #247924;
+$btn-secondary: #464646;
 
 // Media queries
 $media-desktop: '(min-width : 1200px)';

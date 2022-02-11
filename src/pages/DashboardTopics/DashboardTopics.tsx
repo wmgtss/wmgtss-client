@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import ReactTimeAgo from 'react-time-ago';
 import styles from './DashboardTopics.module.scss';
 import TopicService, { TopicDto } from '../../services/TopicService';
-import Button from '../Button/Button';
-import ModalWindow from '../ModalWindow/ModalWindow';
-import CreateTopicForm from '../CreateTopicForm/CreateTopicForm';
+import Button from '../../components/Button/Button';
+import ModalWindow from '../../components/ModalWindow/ModalWindow';
+import CreateTopicForm from './CreateTopicForm/CreateTopicForm';
 import { useAppSelector } from '../../redux/hooks';
 import { Role } from '../../redux/slices/auth.slice';
+import ListedTopic from './ListedTopic/ListedTopic';
 
 export default function DashboardTopics() {
     const [topics, setTopics] = useState<TopicDto[]>([]);
@@ -47,23 +47,11 @@ export default function DashboardTopics() {
             <h1>Discussion Topics</h1>
             <div className={styles.topics}>
                 <div className={styles.topicsEnclosed}>
-                    {topics.map((t) => {
-                        return (
-                            <div className={styles.topic} key={t.id}>
-                                <h3>{t.name}</h3>
-                                <div className={styles.details}>
-                                    <p>By {t.authorName}</p>
-                                    <p className={styles.updated}>
-                                        Updated{' '}
-                                        <ReactTimeAgo
-                                            date={Date.parse(t.updatedOn)}
-                                            locale="en-US"
-                                        />
-                                    </p>
-                                </div>
-                            </div>
-                        );
-                    })}
+                    {topics.map((t) => (
+                        <div className={styles.topic} key={t.id}>
+                            <ListedTopic topic={t} />
+                        </div>
+                    ))}
                 </div>
                 {roles?.includes(Role.Admin) ? createButton : ''}
             </div>

@@ -2,7 +2,7 @@ import TextField from '../../components/TextField/TextField';
 import styles from './BreachedPassword.module.scss';
 import CenteredForm from '../../components/CenteredForm/CenteredForm';
 import FormButton from '../../components/FormButton/FormButton';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { passwordRegex } from '../../utils/regex';
 import { Form, Formik, FormikErrors, FormikHelpers } from 'formik';
 import warning from '../../static/warning.svg';
@@ -56,7 +56,7 @@ function BreachedPassword() {
         });
     };
 
-    return (
+    return pwned ? (
         <CenteredForm
             heading="Insecure Password"
             subheading={`Your password has been seen ${pwned} times in data breaches! Change it now to secure your account.`}
@@ -87,6 +87,8 @@ function BreachedPassword() {
                 <Link to="/">Use insecure password</Link>
             </p>
         </CenteredForm>
+    ) : (
+        <Navigate to="/" replace />
     );
 }
 

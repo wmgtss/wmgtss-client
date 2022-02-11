@@ -7,10 +7,12 @@ import { useAppDispatch } from '../../redux/hooks';
 import { login, logout } from '../../redux/slices/auth.slice';
 import UserService from '../../services/UserService';
 import PrivateRoutes from '../../components/PrivateRoutes/PrivateRoutes';
-import StandardPage from '../StandardPage/StandardPage';
 import { useEffect } from 'react';
 import BreachedPassword from '../BreachedPassword/BreachedPassword';
-import DashboardTopics from '../../components/DashboardTopics/DashboardTopics';
+import DashboardTopics from '../DashboardTopics/DashboardTopics';
+import SelectedTopic from '../SelectedTopic/SelectedTopic';
+import PostEditor from '../PostEditor/PostEditor';
+import SelectedPost from '../SelectedPost/SelectedPost';
 
 function App() {
     const dispatch = useAppDispatch();
@@ -30,14 +32,10 @@ function App() {
             <Routes>
                 {/* Private Routes */}
                 <Route path="/" element={<PrivateRoutes />}>
-                    <Route
-                        path="/"
-                        element={
-                            <StandardPage>
-                                <DashboardTopics />
-                            </StandardPage>
-                        }
-                    />
+                    <Route path="/" element={<DashboardTopics />} />
+                    <Route path="/topic/*" element={<SelectedTopic />} />
+                    <Route path="/post/new" element={<PostEditor />} />
+                    <Route path="/post/*" element={<SelectedPost />} />
                     <Route path="/yikes" element={<BreachedPassword />} />
                 </Route>
 

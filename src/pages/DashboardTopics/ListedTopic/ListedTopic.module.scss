@@ -1,0 +1,33 @@
+@import '../../../utils/variables.scss';
+
+.topic {
+    margin: 0 auto;
+    padding: 20px 20px;
+    transition: background-color 0.2s ease;
+
+    .topicName {
+        color: $link;
+        font-size: 1.3rem;
+        display: inline;
+    }
+
+    .details {
+        display: flex;
+        justify-content: space-between;
+
+        .updated {
+            display: none;
+            font-size: 0.8rem;
+            color: $time-grey;
+
+            @media #{$media-tablet} {
+                display: inline-block;
+            }
+        }
+    }
+
+    &:hover {
+        background-color: $dark-3;
+        cursor: pointer;
+    }
+}

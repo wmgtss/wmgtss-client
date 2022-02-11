@@ -1,0 +1,26 @@
+@import '../../../utils/variables.scss';
+
+.container {
+    h1 {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 35px;
+    }
+
+    .postsEnclosed {
+        background-color: $dark-2;
+        padding: 25px 0;
+        border-radius: 10px;
+        margin-bottom: 10px;
+
+        .post {
+            border-top: 1px solid $dark-4;
+            margin: auto;
+            width: 95%;
+
+            &:last-child {
+                border-bottom: 1px solid $dark-4;
+            }
+        }
+    }
+}

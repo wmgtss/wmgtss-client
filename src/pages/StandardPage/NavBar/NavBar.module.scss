@@ -1,4 +1,4 @@
-@import '../../utils/variables.scss';
+@import '../../../utils/variables.scss';
 
 .container {
     width: 100%;
@@ -15,26 +15,27 @@
 
         img {
             height: 40px;
-            margin-right: 25px;
+            margin-right: 15px;
         }
 
         h1 {
             font-weight: lighter;
             display: none;
+            color: $off-white;
+            padding-bottom: 7px;
 
             @media #{$media-tablet} {
                 display: inline-block;
-                width: 450px;
             }
         }
     }
 
-    .logout {
-        color: $link;
-
-        &:hover {
-            text-decoration: underline;
-            cursor: pointer;
+    .right {
+        p {
+            display: inline;
+        }
+        .username {
+            margin-right: 20px;
         }
     }
 }

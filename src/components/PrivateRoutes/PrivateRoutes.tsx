@@ -1,4 +1,5 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import StandardPage from '../../pages/StandardPage/StandardPage';
 import { useAppSelector } from '../../redux/hooks';
 
 export default function PrivateRoutes() {
@@ -7,7 +8,9 @@ export default function PrivateRoutes() {
     const isLoading = useAppSelector((state) => state.auth.isLoading);
 
     return isAuthed ? (
-        <Outlet />
+        <StandardPage>
+            <Outlet />
+        </StandardPage>
     ) : isLoading ? (
         <div></div>
     ) : (

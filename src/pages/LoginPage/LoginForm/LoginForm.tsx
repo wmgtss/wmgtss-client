@@ -1,13 +1,13 @@
 import styles from './LoginForm.module.scss';
-import TextField from '../TextField/TextField';
-import CenteredForm from '../CenteredForm/CenteredForm';
-import FormButton from '../FormButton/FormButton';
+import TextField from '../../../components/TextField/TextField';
+import CenteredForm from '../../../components/CenteredForm/CenteredForm';
+import FormButton from '../../../components/FormButton/FormButton';
 import { Link } from 'react-router-dom';
-import { emailRegex } from '../../utils/regex';
+import { emailRegex } from '../../../utils/regex';
 import { Form, Formik, FormikErrors } from 'formik';
-import AuthService, { LoginDto } from '../../services/AuthService';
-import { useAppDispatch } from '../../redux/hooks';
-import { login } from '../../redux/slices/auth.slice';
+import AuthService, { LoginDto } from '../../../services/AuthService';
+import { useAppDispatch } from '../../../redux/hooks';
+import { login } from '../../../redux/slices/auth.slice';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -30,7 +30,7 @@ function LoginForm() {
         return errors;
     };
 
-    const submit = (values: LoginDto) => {
+    const submit = (values: LoginDto, { resetForm }: any) => {
         setIsSubmitting(true);
         AuthService.login(values)
             .then((res) => {
@@ -43,6 +43,7 @@ function LoginForm() {
                     return setError('Server unavailable');
                 }
                 if (error.response.status === 401) {
+                    resetForm();
                     return setError('Invalid email or password');
                 }
             });

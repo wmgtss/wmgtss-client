@@ -1,0 +1,28 @@
+@import '../../../utils/variables.scss';
+
+.post {
+    margin: 0 auto;
+    padding: 15px 20px;
+    transition: background-color 0.2s ease;
+
+    .postName {
+        color: $link;
+        font-size: 1.3rem;
+        display: inline;
+    }
+
+    .details {
+        display: flex;
+        justify-content: space-between;
+
+        .created {
+            font-size: 0.8rem;
+            color: $time-grey;
+        }
+    }
+
+    &:hover {
+        background-color: $dark-3;
+        cursor: pointer;
+    }
+}

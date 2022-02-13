@@ -1,46 +1,56 @@
-# Getting Started with Create React App
+# WMGTSS Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This is the frontend component of the WMGTSS project for WM393 Assignment 2, written in [React](https://reactjs.org/) and boostrapped with [Create React App](https://create-react-app.dev/).
 
-In the project directory, you can run:
+**This project requires a large amount of configuration. To view the live app, I strongly suggest navigating to https://wmgtss.com/ to see the production application already running.**
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Setup
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The following steps **must** be carried out to ensure the application works correctly.
 
-### `npm test`
+**Important:** Before running this client application, ensure the wmgtss-api project is setup and running.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Hosts Fix
 
-### `npm run build`
+This section should already have been carried out in the setup for the wmgtss-api project.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For authentication to work, the app must be running on a 'real' domain, and not localhost. To resolve this, until a better fix can be found, edit the `/etc/hosts` file and add the following content to the bottom. On Windows this can be found at `C:\Windows\System32\Drivers\etc\hosts`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# WMGTSS Local Development
+127.0.0.1 app.com
+127.0.0.1 api.app.com
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Environment
 
-### `npm run eject`
+Create file named `.development.env` at the same directory level as this README, and enter the following line, indicating the new URL of the backend application as set in the previous section.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+REACT_APP_API_URL=http://api.app.com:5000
+BROWSER=none
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+# install npm dependencies
+$ npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+## Running the app
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Simply use the following command to start the application.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+# run in development mode
+$ npm install
+```
+
+Once it has fully started, navigate to http://app.com/ to see the app running.

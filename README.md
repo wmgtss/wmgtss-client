@@ -50,7 +50,7 @@ Simply use the following command to start the application.
 
 ```bash
 # run in development mode
-$ npm install
+$ npm start
 ```
 
 Once it has fully started, navigate to http://app.com/ to see the app running.

@@ -16,6 +16,11 @@ type ChangePasswordForm = {
     passwordRepeat: string;
 };
 
+/**
+ * A form contained within CenteredForm that warns the user that their
+ * password is not secure. This form allows them to change their password,
+ * or continue with their bad password.
+ */
 function BreachedPassword() {
     const pwned = useAppSelector((state) => state.pwned.pwnedCount);
     const navigate = useNavigate();

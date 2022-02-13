@@ -1,5 +1,10 @@
 import styles from './Sidebar.module.scss';
 
+/**
+ * Not currently implemented - just showing placeholder data for now
+ * This component should display X most recently created posts across
+ * all topics.
+ */
 export default function Sidebar() {
     const active = [
         {

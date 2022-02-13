@@ -8,6 +8,12 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import Button from '../../components/Button/Button';
 import { Role } from '../../redux/slices/auth.slice';
 
+/**
+ * Gets all the posts for a given topic, and displays them in a list
+ * When this component loads, it sets a localStorage item called 'lastTopicId'
+ * This is then referred to in the PostEditor to select it as the default
+ * destination for a new post.
+ */
 export default function SelectedTopic() {
     const location = useLocation();
     const [topicId, setTopicId] = useState<string>();

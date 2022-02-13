@@ -16,22 +16,26 @@ export interface TopicDto {
     updatedOn: string;
 }
 
+// Create a new topic
 const createTopic = (topic: CreateTopicDto) => {
     return axios.post(API_URL + '/topics', topic, {
         withCredentials: true,
     });
 };
 
+// Get all topics
 async function getAllTopics(): Promise<TopicDto[]> {
     const res = await axios.get(API_URL + '/topics');
     return res.data;
 }
 
+// Get a single topic
 async function getTopic(id: string): Promise<TopicDto> {
     const res = await axios.get(API_URL + `/topics/${id}`);
     return res.data;
 }
 
+// Delete a topic with the given ID
 async function deleteTopic(id: string): Promise<TopicDto> {
     const res = await axios.delete(API_URL + `/topics/${id}`, {
         withCredentials: true,

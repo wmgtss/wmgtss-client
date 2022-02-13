@@ -7,6 +7,10 @@ export type ListedTopicProps = {
     topic: TopicDto;
 };
 
+/**
+ * A single topic/row that will be shown in the list on the
+ * dashboard.
+ */
 export default function ListedTopic(props: ListedTopicProps) {
     const navigate = useNavigate();
 

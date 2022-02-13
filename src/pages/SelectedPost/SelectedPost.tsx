@@ -6,6 +6,10 @@ import MarkdownView from 'react-showdown';
 import { useAppSelector } from '../../redux/hooks';
 import { Role } from '../../redux/slices/auth.slice';
 
+/**
+ * Gets the post from the database and renders the markdown
+ * into actual HTML™
+ */
 export default function SelectedPost() {
     const location = useLocation();
     const [post, setPost] = useState<PostDto>();

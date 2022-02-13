@@ -12,6 +12,11 @@ const converter = new Converter({
     tasklists: true,
 });
 
+/**
+ * Custom implementation of the markdown editor from react-mde
+ * Mostly  just adds styling, but also some abstraction to keep PostEditor
+ * clean. Also adds Formik compatibility.
+ */
 export default function MarkdownEditor() {
     const [selectedTab, setSelectedTab] = useState<'write' | 'preview'>(
         'write',

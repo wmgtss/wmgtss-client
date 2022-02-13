@@ -8,7 +8,10 @@ export type ButtonProps = {
     disabled?: boolean;
     type?: 'primary' | 'secondary';
 };
-
+/**
+ * A generic button, comes in green or grey flavour
+ * Possibly redundant, as FormButton does almost the same thing
+ */
 export default function Button(props: ButtonProps) {
     return (
         <button

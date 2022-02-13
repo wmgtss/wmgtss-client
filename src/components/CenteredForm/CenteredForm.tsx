@@ -9,6 +9,10 @@ export type CenteredFormProps = {
     icon?: string;
 };
 
+/**
+ * A wrapper for any form, such as login or signup
+ * Places the form in the center of the screen, with a logo above
+ */
 function CenteredForm(props: CenteredFormProps) {
     return (
         <div className={styles.container}>

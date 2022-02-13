@@ -5,6 +5,10 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { logout as clearAuth } from '../../../redux/slices/auth.slice';
 import { Link } from 'react-router-dom';
 
+/**
+ * NavBar that displays the site logo, logged in user name, and
+ * option to log out. The logo links back to the dashboard.
+ */
 export default function NavBar() {
     const dispatch = useAppDispatch();
     const username = useAppSelector((state) => state.auth.user?.name);

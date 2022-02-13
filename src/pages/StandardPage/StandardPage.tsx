@@ -8,6 +8,10 @@ type StandardPageProps = {
     children?: ReactNode;
 };
 
+/**
+ * The wrapper for all pages that aren't CenteredForms.
+ * Puts the navbar at the top, and recent posts to the right.
+ */
 export default function StandardPage(props: StandardPageProps) {
     return (
         <div className={styles.container}>

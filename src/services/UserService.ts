@@ -8,12 +8,14 @@ export interface PublicUserDto {
     createdOn: Date;
 }
 
+// Get the currently signed in user
 const getCurrentUser = () => {
     return axios.get(API_URL + '/user', {
         withCredentials: true,
     });
 };
 
+// Change the password of the signed in user
 const changePassword = (newPassword: string) => {
     return axios.put(
         API_URL + '/user/password',

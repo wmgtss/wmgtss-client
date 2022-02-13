@@ -16,6 +16,10 @@ type RegisterFormFields = RegisterDto & {
     passwordRepeat: string;
 };
 
+/**
+ * Sign up form, rendered inside the Centered Form.
+ * Using Formik for validation
+ */
 function SignUpForm() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();

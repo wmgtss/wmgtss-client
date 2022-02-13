@@ -11,6 +11,10 @@ import { login } from '../../../redux/slices/auth.slice';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
+/**
+ * Login form, rendered inside the Centered Form.
+ * Using Formik for validation
+ */
 function LoginForm() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();

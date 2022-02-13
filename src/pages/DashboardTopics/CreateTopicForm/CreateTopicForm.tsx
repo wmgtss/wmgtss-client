@@ -9,6 +9,10 @@ export type CreateTopicFormProps = {
     onSubmit?: () => void;
 };
 
+/**
+ * The form for creating a new topic, displayed within the modal
+ * on the dashboard
+ */
 function CreateTopicForm(props: CreateTopicFormProps) {
     const [error, setError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);

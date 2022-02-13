@@ -14,6 +14,9 @@ import SelectedTopic from '../SelectedTopic/SelectedTopic';
 import PostEditor from '../PostEditor/PostEditor';
 import SelectedPost from '../SelectedPost/SelectedPost';
 
+/**
+ * Main application component, mainly provides routing between pages
+ */
 function App() {
     const dispatch = useAppDispatch();
 
@@ -36,12 +39,12 @@ function App() {
                     <Route path="/topic/*" element={<SelectedTopic />} />
                     <Route path="/post/new" element={<PostEditor />} />
                     <Route path="/post/*" element={<SelectedPost />} />
-                    <Route path="/yikes" element={<BreachedPassword />} />
                 </Route>
 
                 {/* Public Routes */}
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup/*" element={<SignUpPage />} />
+                <Route path="/yikes" element={<BreachedPassword />} />
                 <Route
                     path="/*"
                     element={<Error title="404" message="Not Found" />}

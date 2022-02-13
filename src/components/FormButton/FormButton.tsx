@@ -7,6 +7,9 @@ export type FormButtonProps = {
     disabled?: boolean;
 };
 
+/**
+ * A submit button for forms, compatible with Formik
+ */
 function FormButton(props: FormButtonProps) {
     return (
         <button

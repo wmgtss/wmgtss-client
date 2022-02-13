@@ -7,6 +7,11 @@ import Button from '../../components/Button/Button';
 import PostService, { CreatePostDto } from '../../services/PostService';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * The page from which a user creates a post.
+ * The name of this component could be revised.. It's not
+ * so much an editor, as it is a PostCreator
+ */
 export default function PostEditor() {
     const navigate = useNavigate();
 

@@ -8,6 +8,10 @@ export type ModalWindowProps = PopupProps & {
     children: ReactNode;
 };
 
+/**
+ * A custom implementation of the reactjs-popup modal window
+ * No new functionality, just adds custom styles
+ */
 export default function ModalWindow(props: ModalWindowProps) {
     return (
         <div>

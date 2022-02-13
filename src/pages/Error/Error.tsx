@@ -5,6 +5,10 @@ export type ErrorProps = {
     message: string;
 };
 
+/**
+ * Generic error page, displays any title and message provided
+ * So far this is only used for the 404 page.
+ */
 function NotFound(props: ErrorProps) {
     return (
         <div className={styles.container}>
